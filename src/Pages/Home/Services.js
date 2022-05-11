@@ -9,19 +9,22 @@ const Services = () => {
     {
       _id: 1,
       name: "Fluoride Treatment",
-      description: "",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, assumenda perferendis dignissimos exercitationem asperiores",
       img: fluoride,
     },
     {
       _id: 2,
       name: "Cavity Filling",
-      description: "",
+      description:
+        "Lorem ipsum amet sed, at molestias aliquam totam adipisci doloribus aut alias, cumque laborum modi. Sunt, deleniti alias?",
       img: cavity,
     },
     {
       _id: 3,
       name: "Teeth Whitening",
-      description: "",
+      description:
+        "Lorem ipsum amet sed, at molestias aliquam totam adipisci doloribus aut alias, cumque laborum modi. Sunt, deleniti alias?",
       img: whitening,
     },
   ];

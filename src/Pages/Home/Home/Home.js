@@ -1,14 +1,16 @@
 import React from "react";
 import Banner from "../Banner";
 import Info from "../Info";
+import MakeAppointment from "../MakeAppointment";
 import Services from "../Services";
 
 const Home = () => {
   return (
-    <div className="px-24">
+    <div className="px-5 lg:px-24 z-0">
       <Banner></Banner>
       <Info></Info>
-      <Services></Services>
+          <Services></Services>
+          <MakeAppointment></MakeAppointment>
     </div>
   );
 };
