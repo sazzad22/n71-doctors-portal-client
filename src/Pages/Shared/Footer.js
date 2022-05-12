@@ -39,8 +39,8 @@ const Footer = () => {
           <a class="link link-hover">Cookie policy</a>
         </div>
       </div>
-      <div className="my-20 text-center mr-32">
-              <p>Copyright © {date}- All right reserved by Sazzad-ur-Rahman Ltd</p>
+      <div className="mt-10  items-center text-center mr-32">
+              <p>Copyright © {date}- All right reserved by Sazzad-ur-Rahman </p>
       </div>
     </footer>
   );
