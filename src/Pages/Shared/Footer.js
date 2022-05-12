@@ -15,7 +15,7 @@ const Footer = () => {
         background: `url(${footer})`,
         backgroundSize: "cover",
       }}
-      class=" py-16 pl-10 lg:pl-40 "
+      class=" py-16 pl-10 lg:pl-40  "
     >
       <div className="footer text-center">
         <div>

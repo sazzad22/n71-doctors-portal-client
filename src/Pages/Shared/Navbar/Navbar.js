@@ -4,22 +4,22 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const menuItem = (
     <>
-      <li>
+      <li  >
         <Link to={"/home"}>Home</Link>
       </li>
-      <li>
+      <li  >
         <Link to={"/about"}>About</Link>
       </li>
-      <li>
+      <li  >
         <Link to={"/appointment"}>Appointment</Link>
       </li>
-      <li>
+      <li  >
         <Link to={"/reviews"}>Reviews</Link>
       </li>
-      <li>
+      <li  >
         <Link to={"/contactus"}>Contact Us</Link>
       </li>
-      <li>
+      <li  >
         <Link to={"/login"}>Login</Link>
       </li>
     </>
@@ -52,10 +52,10 @@ const Navbar = () => {
               {menuItem}
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+          <Link to={'/home'} class="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
         </div>
         <div class="navbar hidden lg:flex justify-end">
-          <ul class="menu menu-horizontal p-0">{menuItem}</ul>
+          <ul class="menu  menu-horizontal p-0">{menuItem}</ul>
         </div>
       </div>
     </div>
