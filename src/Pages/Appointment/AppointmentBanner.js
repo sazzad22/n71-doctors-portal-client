@@ -5,28 +5,24 @@ import "react-day-picker/dist/style.css";
 import bg from "../../assets/images/bg.png";
 import chair from "../../assets/images/chair.png";
 
-const AppointmentBanner = ({date,setDate}) => {
-  
-  let footer = <p>Please pick a day.</p>;
-  if (date) {
-    footer = <p>You picked {format(date, "PP")}.</p>;
-  }
+const AppointmentBanner = ({ date, setDate }) => {
   return (
     <div
-      className="pt-28"
+      className="pt-20"
       style={{
         background: `url(${bg})`,
         backgroundSize: "cover",
       }}
     >
-      <h2 className="text-5xl text-center  font-semibold text-primary ">
-        Fix An Appointment
-      </h2>
-      <div class="hero mt-20 min-h-screen ">
-        <div class="hero-content flex-col lg:flex-row-reverse gap-28">
-          <img src={chair} class="max-w-md rounded-lg shadow-2xl" />
+      <div class="hero mt-5 min-h-screen ">
+        <div class="hero-content grid lg:grid-cols-2 grid-cols-1 gap-28">
+          <h2 className="text-5xl text-center  font-semibold text-primary col-span-2 ">
+            Pick An Appointment Date
+          </h2>
+
+          <img src={chair} class="max-w-md rounded-lg shadow-2xl" alt="" />
           <div>
-                      <DayPicker mode="single" selected={date} onSelect={setDate} footer={footer}/>
+            <DayPicker mode="single" selected={date} onSelect={setDate} />
           </div>
         </div>
       </div>
