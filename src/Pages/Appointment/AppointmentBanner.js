@@ -15,14 +15,16 @@ const AppointmentBanner = ({ date, setDate }) => {
       }}
     >
       <div className="hero mt-5 min-h-screen ">
-        <div className="hero-content grid lg:grid-cols-2 grid-cols-1 gap-28">
+        <div className=" grid  grid-cols-1 ">
           <h2 className="text-5xl text-center  font-semibold text-primary col-span-2 ">
             Pick An Appointment Date
           </h2>
 
-          <img src={chair} className="max-w-md rounded-lg shadow-2xl" alt="" />
+          <div className="grid my-12 lg:grid-cols-2 grid-cols-1 justify-items-center mx-auto">
+          <img src={chair} className=" my-10 lg:my-0 w-sm px-5 lg:px-0  lg:max-w-lg rounded-lg shadow-2xl" alt="" />
           <div>
             <DayPicker mode="single" selected={date} onSelect={setDate} />
+          </div>
           </div>
         </div>
       </div>

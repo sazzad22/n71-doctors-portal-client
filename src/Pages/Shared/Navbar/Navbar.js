@@ -69,7 +69,8 @@ const Navbar = () => {
         </div>
         <div className="navbar hidden lg:flex justify-end">
           <ul className="menu  menu-horizontal p-0">{menuItem}</ul>
-          {user&& <span>{user.displayName}</span> }
+          {user && <span className=" border-2 px-2 rounded-3xl  font-semibold text-accent hover:text-primary ease-in duration-200 cursor-pointer
+           shadow-sm">{user.displayName}</span>}
         </div>
       </div>
     </div>
