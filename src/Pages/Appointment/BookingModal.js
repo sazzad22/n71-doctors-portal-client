@@ -16,17 +16,17 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
   };
   return (
     <div>
-      <input type="checkbox" id="booking-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="booking-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           {/* cross btn */}
           <label
             for="booking-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="font-bold text-2xl  text-primary text-center mt-2 ">
+          <h3 className="font-bold text-2xl  text-primary text-center mt-2 ">
             {" "}
             <span className="text-accent">Treatment:</span> {name}
           </h3>
@@ -39,10 +39,13 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
               disabled
               type="text"
               value={format(date, "PP")}
-              class="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered input-secondary w-full max-w-xs"
             />
             {/* slot options */}
-            <select name="slot" class="select select-primary w-full max-w-xs">
+            <select
+              name="slot"
+              className="select select-primary w-full max-w-xs"
+            >
               {slots.map((slot) => (
                 <option value={slot}>{slot}</option>
               ))}
@@ -50,25 +53,25 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
             <input
               type="text"
               placeholder="Type here"
-              class="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
               name="name"
               type="text"
               placeholder="Full Name"
-              class="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
               name="phone"
               type="text"
               placeholder="Phone Number"
-              class="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
               name="email"
               type="text"
               placeholder="Email"
-              class="input input-bordered input-secondary w-full max-w-xs"
+              className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
               type="submit"
