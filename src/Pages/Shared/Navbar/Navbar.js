@@ -1,12 +1,12 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {signOut} from 'firebase/auth';
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  const handleSignOut=()=>signOut(auth)
+  const handleSignOut = () => signOut(auth);
 
   const menuItem = (
     <>
@@ -26,9 +26,10 @@ const Navbar = () => {
         <Link to={"/contactus"}>Contact Us</Link>
       </li>
       <li>
-        
         {user ? (
-          <button className="btn btn-ghost" onClick={handleSignOut} >Sign Out</button>
+          <button className="btn btn-ghost" onClick={handleSignOut}>
+            Sign Out
+          </button>
         ) : (
           <Link to={"/login"}>Login</Link>
         )}
@@ -37,7 +38,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar   glass absolute z-20">
+      <div className="navbar   glass fixed z-10">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -69,8 +70,14 @@ const Navbar = () => {
         </div>
         <div className="navbar hidden lg:flex justify-end">
           <ul className="menu  menu-horizontal p-0">{menuItem}</ul>
-          {user && <span className=" border-2 px-2 rounded-3xl  font-semibold text-accent hover:text-primary ease-in duration-200 cursor-pointer
-           shadow-sm">{user.displayName}</span>}
+          {user && (
+            <span
+              className=" border-2 px-2 rounded-3xl  font-semibold text-accent hover:text-primary ease-in duration-200 cursor-pointer
+           shadow-sm"
+            >
+              {user.displayName}
+            </span>
+          )}
         </div>
       </div>
     </div>

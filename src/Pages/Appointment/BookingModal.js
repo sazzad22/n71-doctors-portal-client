@@ -1,18 +1,41 @@
 import React from "react";
 import { format } from "date-fns";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
   const { _id, name, slots } = treatment;
+  const [user] = useAuthState(auth);
+  const formattedDate = format(date, "PP");
 
   const handleBooking = (event) => {
     event.preventDefault();
-    const bookingInfo = {
-      slot: event.target.slot?.value,
+    const slot = event.target.slot.value;
+    const booking = {
+      treatmentId: _id,
+      treatment: name,
+      date: formattedDate,
+      slot,
+      patient: user.email,
+      patientName: user.displayName,
+      phone: event.target.phone?.value,
     };
-    console.log(bookingInfo, _id, name);
-
-    //this closes the modal
-    setTreatment(null);
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+        } else {
+        }
+        //this closes the modal
+        setTreatment(null);
+      });
   };
   return (
     <div>
@@ -50,15 +73,12 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                 <option value={slot}>{slot}</option>
               ))}
             </select>
+
             <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-            <input
+              disabled
               name="name"
               type="text"
-              placeholder="Full Name"
+              value={user.displayName}
               className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
@@ -68,9 +88,10 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
               className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
+              disabled
               name="email"
               type="text"
-              placeholder="Email"
+              value={user.email}
               className="input input-bordered input-secondary w-full max-w-xs"
             />
             <input
