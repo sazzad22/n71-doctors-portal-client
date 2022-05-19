@@ -6,7 +6,10 @@ import auth from "../../../firebase.init";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  const handleSignOut = () => signOut(auth);
+  const handleSignOut = () => {
+    signOut(auth);
+    localStorage.removeItem('accessToken');
+  };
 
   const menuItem = (
     <>
@@ -18,6 +21,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to={"/appointment"}>Appointment</Link>
+      </li>
+      <li>
+        <Link to={"dashboard"}>Dashboard</Link>
       </li>
       <li>
         <Link to={"/reviews"}>Reviews</Link>
@@ -38,7 +44,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar   glass fixed z-10">
+      <div className="navbar   glass fixed z-20">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -52,7 +58,7 @@ const Navbar = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth="3"
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
@@ -78,6 +84,25 @@ const Navbar = () => {
               {user.displayName}
             </span>
           )}
+        </div>
+        <div className="navbar-end lg:hidden">
+        <label tabIndex="1" for="my-drawer-2" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="blue"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+        
         </div>
       </div>
     </div>
