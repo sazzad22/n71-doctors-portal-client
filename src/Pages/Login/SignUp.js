@@ -1,10 +1,12 @@
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,useUpdateProfile
+  useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
@@ -12,48 +14,46 @@ import Loading from "../Shared/Loading";
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const [updateProfile, updating, uError] = useUpdateProfile(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, uError] = useUpdateProfile(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
-    } = useForm();
+  } = useForm();
   const navigate = useNavigate();
   const [token] = useToken(user || gUser);
 
-
   let signUpError;
 
-    if (token) {
-        
-      navigate('/appointment')
-    
-  }
-  if (loading || gLoading ||updating) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
+  if (token) {
+    navigate("/appointment");
+    toast.success(`Thanks For Signing Up ${user?.user?.email}`);
+  }
 
-  if (error || gError ||uError) {
+  if (error || gError || uError) {
     signUpError = (
       <p>
-        <small>{error?.message || gError?.message|| uError?.message }</small>
+        <small>{error?.message || gError?.message || uError?.message}</small>
       </p>
     );
-    }
-    
+  }
 
   const onSubmit = async (data) => {
-      await createUserWithEmailAndPassword(data.email, data.password);
-      await updateProfile({displayName:data.name})
-    
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
 
   return (
     <div className="flex items-center min-h-screen justify-center pt-20">
       <div className="card w-96 bg-base-100 shadow-2xl ">
         <div className="card-body">
-          <h2 className="text-center font-bold text-2xl text-accent ">Sign Up</h2>
+          <h2 className="text-center font-bold text-2xl text-accent ">
+            Sign Up
+          </h2>
           {/* form */}
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* Email input */}
@@ -161,7 +161,10 @@ const SignUp = () => {
           </form>
           <p className="mt-3">
             <small>
-              already have an account? <Link className="text-primary hover:underline" to="/signup">Log In</Link>{" "}
+              already have an account?{" "}
+              <Link className="text-primary hover:underline" to="/signup">
+                Log In
+              </Link>{" "}
             </small>
           </p>
           <div className="divider">OR</div>
