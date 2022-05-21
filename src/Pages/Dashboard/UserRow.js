@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch }) => {
   const { role, email } = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://radiant-temple-40996.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -13,15 +13,14 @@ const UserRow = ({ user, index, refetch }) => {
     })
       .then((res) => {
         if (res.status === 403) {
-          toast.error(`Failed to make an admin`)
+          toast.error(`Failed to make an admin`);
         }
-        return res.json()
+        return res.json();
       })
       .then((data) => {
         if (data.modifiedCount > 0) {
-
           refetch();
-          toast.success(`Successfully Made An Admin`)
+          toast.success(`Successfully Made An Admin`);
         }
       });
   };

@@ -11,18 +11,30 @@ const AvailableAppointment = ({ date }) => {
   const formattedDate = format(date, "PP");
 
   // inside the useQuery available is a cach key, -ekhane aro ekta cache er key dite hobe - formattedDate
-  const { isLoading, error, data: services,refetch } = useQuery(['availalble',formattedDate], () => fetch(`http://localhost:5000/available?date=${formattedDate}`).then(res => res.json()))
-  
+  const {
+    isLoading,
+    error,
+    data: services,
+    refetch,
+  } = useQuery(["availalble", formattedDate], () =>
+    fetch(
+      `https://radiant-temple-40996.herokuapp.com/available?date=${formattedDate}`
+    ).then((res) => res.json())
+  );
+
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
   if (error) {
-    return <div><h2>Error : {error.message}</h2></div>
+    return (
+      <div>
+        <h2>Error : {error.message}</h2>
+      </div>
+    );
   }
 
-
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/available?date=${formattedDate}`)
+  //   fetch(`https://radiant-temple-40996.herokuapp.com/available?date=${formattedDate}`)
   //     .then((res) => res.json())
   //     .then((data) => setServices(data));
   // }, [formattedDate]);
