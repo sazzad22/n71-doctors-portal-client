@@ -30,7 +30,7 @@ const Dashboard = () => {
             <>
               <li>
                 <Link to="/dashboard/users">All Users</Link>
-                <Link to="/dashboard/adddoctor">Add Doctor</Link>
+                <Link to="/dashboard/adddoctor">Addd Doctor</Link>
               </li>
             </>
           )}
